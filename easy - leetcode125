@@ -1,0 +1,23 @@
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+
+        if s == " ":
+            return True
+        
+        a = s.lower()
+        l,r = 0,len(a) -1
+
+        while l<r:
+            while ( not a[l].isalnum() ) and l < r :
+                l += 1
+            while ( not a[r].isalnum()) and l < r:
+                r -= 1
+            
+            if a[l] == a[r]:
+                l += 1
+                r -= 1
+            else:
+                return False
+        
+        return True
+        
