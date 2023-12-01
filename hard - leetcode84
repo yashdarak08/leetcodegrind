@@ -1,0 +1,24 @@
+class Solution:
+    def largestRectangleArea(self, heights: List[int]) -> int:
+
+        maxArea = 0
+        res = []          #array pair (index,height)
+
+        for i,h in enumerate(heights):
+            
+            start = i
+
+            while res and h < res[-1][1]:
+                maxArea = max( maxArea, res[-1][1]*(i-res[-1][0]) ) 
+                start = res[-1][0]
+                res.pop()
+
+            res.append([start,h])
+
+        for i,h in res:
+            maxArea = max( maxArea, h* ( len(heights)-i ) )
+
+        return maxArea
+
+            
+         
